@@ -144,7 +144,7 @@ Post request for getting all the Tweets stored in the database.
 
 ##### Example :
 ```
-POST /twitter/search HTTP/1.1
+POST /gettweets/all HTTP/1.1
 Host: localhost:3000
 Content-Type: application/json
 Cache-Control: no-cache
@@ -152,7 +152,7 @@ Cache-Control: no-cache
 { "query": "an", "count": 100, "wipe_previous": true }
 ```
 
-#### 1: /sorted
+#### 2: /sorted
 Post request for getting all the Tweets stored in the database based on supplied sort rule.
 
 ##### Request Parameters: 
@@ -171,7 +171,7 @@ Post request for getting all the Tweets stored in the database based on supplied
 
 ##### Example :
 ```
-POST /twitter/search HTTP/1.1
+POST /gettweets/sorted HTTP/1.1
 Host: localhost:3000
 Content-Type: application/json
 Cache-Control: no-cache
@@ -180,7 +180,7 @@ Cache-Control: no-cache
 ```
 
 
-### 2: /withTweetId/:tweet_id
+### 3: /withTweetId/:tweet_id
 GET method to find a tweet in the database with given tweet id.
  
 ##### Example :
@@ -191,7 +191,7 @@ Content-Type: application/json
 Cache-Control: no-cache
 
 ```
-### 3: /withText
+### 4: /withText
 Post method to find tweets in the database with given text.
 
 ##### Request Parameters: 
@@ -206,7 +206,7 @@ Cache-Control: no-cache
 
 { "text" : "I just made an offer on poshmark for a black sequin jacket to wear to IDKH and MAX next month..I’m really hoping they accept" }
 ```
- ### 4: /withNumberOfHashtags
+ ### 5: /withNumberOfHashtags
 Post method to find tweets in the database with number of Hashtags greater than equal to , less than equal to , or exactly given.
 
 ##### Request Parameters: 
@@ -223,16 +223,16 @@ Cache-Control: no-cache
 
 { "gte": 1 }
 ```
- ### 5: /withNumberOfUrls  
+ ### 6: /withNumberOfUrls  
 Post method to find tweets in the database with number of Urls greater than equal to , less than equal to , or exactly given. Similar to 4.
  
- ### 6: /withNumberOfUserMentions  
+ ### 7: /withNumberOfUserMentions  
 Post method to find tweets in the database with number of UserMentions greater than equal to , less than equal to , or exactly given. Similar to 4.
 
- ### 7: /withRetweetCount  
+ ### 8: /withRetweetCount  
 Post method to find tweets in the database with number of Retweet Count greater than equal to , less than equal to , or exactly given. Similar to 4.
 
- ### 8: /withHashtag
+ ### 9: /withHashtag
 Post method to find tweets in the database with given Hashtag in text.
 
 ##### Request Parameters: 
@@ -248,7 +248,7 @@ Cache-Control: no-cache
 { "hashtag":"video" }
 ```
 
- ### 9: /withUrl
+ ### 10: /withUrl
 Post method to find tweets in the database with given Url in text.
 
 ##### Request Parameters: 
@@ -263,7 +263,7 @@ Cache-Control: no-cache
 
 { "url":"https://t.co/qWXGxsqkpr" }
 ```
- ### 10: /withUserMention
+ ### 11: /withUserMention
  Post method to find tweets in the database with given UserMention in text.
 
 ##### Request Parameters: 
@@ -278,7 +278,7 @@ Cache-Control: no-cache
 
 { "user_mention":"DavidNir" }
 ```
- ### 11: /fromUserWithUsername
+ ### 12: /fromUserWithUsername
  Post method to find tweets in the database with given User's name in text.
 
 ##### Request Parameters: 
@@ -293,7 +293,7 @@ Cache-Control: no-cache
 
 { "user_name":"Prasoon Birla" }
 ```
-### 12: /fromUserWithScreenName
+### 13: /fromUserWithScreenName
  Post method to find tweets in the database with given User's screen_name in text.
 
 ##### Request Parameters: 
@@ -308,7 +308,7 @@ Cache-Control: no-cache
 
 { "screen_name":"pbirla29" }
 ```
-### 13: /withinDateRange
+### 14: /withinDateRange
  Post method to find tweets in the database within a date range.
 
 ##### Request Parameters: 
@@ -327,7 +327,7 @@ Cache-Control: no-cache
 { "date_first" : "2018-10-16T02:21:52.000Z", "date_second" : "2018-10-16T02:21:52.000Z" }
 ``` 
 
-### 14: /onDate
+### 15: /onDate
  Post method to find tweets in the database on a specific date and time.
 
 ##### Request Parameters: 
@@ -343,7 +343,7 @@ Cache-Control: no-cache
 { "date" : "2018-10-16T02:21:52.000Z" }
 ``` 
 
-### 15: /withMediaType
+### 16: /withMediaType
  Post method to find tweets in the database containing a video or photo.
 
 ##### Request Parameters: 
@@ -359,7 +359,7 @@ Cache-Control: no-cache
 { "type": "photo" }
 ``` 
 
-### 16: /fromSource
+### 17: /fromSource
  Post method to find tweets in the database from a specified source.
 
 ##### Request Parameters: 
@@ -374,7 +374,7 @@ Cache-Control: no-cache
 
 { "source": "Android" }
 ``` 
-### 17: /fromPlace
+### 18: /fromPlace
  Post method to find tweets in the database from a specified place.
 
 ##### Request Parameters: 
