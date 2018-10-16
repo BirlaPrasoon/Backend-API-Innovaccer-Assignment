@@ -30,16 +30,77 @@ Run the environment
 ```
 npm start
 ```
-## API-1: http://localhost:3000/twitter
+
+# Curated Tweet Schema
+```javascript
+var tweetSchema  = new Schema({
+    _id: {type: Schema.Types.ObjectId},
+    created_at: {type: Date},
+    id: {type: Number, required: true, unique: true},
+    text: String,
+    full_text: String,
+    truncated: {type: Boolean, default: false},
+
+    quoted_status_id: Number,
+
+    is_quote_status: {type: Boolean, default: false},
+
+    fromMac: {type: Boolean, default: false},
+    fromAndroid: {type: Boolean, default: false},
+    fromiPhone: {type: Boolean, default: false},
+    fromiPad: {type: Boolean, default: false},
+    fromTweetDeck: {type: Boolean, default: false},
+    fromWebClient: {type: Boolean, default: false},
+
+    // if the status is retweeted, stote the id of the original tweet
+    is_a_retweeted: {type: Boolean, default: false},
+    retweeted_status_id: Number,
+
+    quote_count: Number,
+    reply_count: Number,
+    retweet_count: Number,
+    favourite_count: Number,
+
+    hashtags: [{name: String}],
+    hashtag_count: Number,
+    urls: [{name: String}],
+    urls_count : Number,
+    user_mentions:[{name: String}],
+    user_mentions_count : Number,
+
+    // Place
+    country:String,
+    country_code: String,
+    place_name: String,
+    place_type: String,
+
+    // User
+    user_name: String,
+    user_screen_name: String,
+
+    contains_video: {type: Boolean, default: false},
+    contains_image: {type: Boolean, default: false},
+
+    favorited: {type: Boolean, default: false},
+    retweeted: {type: Boolean, default: false},
+    lang: String,
+});
+```
+
+
+# API-1: /twitter
 API for streaming and searching tweets on twitter providing 'keyword' to look upon. Stores curated version of tweet to the database.
 
-#### 1: /search 
+### 1: /search 
 Post method to search tweets as requested for requested keyword.
 
 ##### Request Parameters: 
  * 1: query: keyword -> keyword upon which search to perform
  * 2: count: Number -> number of tweets to store
  * 3: wipe_previous -> Boolean: wipe out previous data
+
+#### Returns : 
+  Number of tweets stored in the database.
 ##### Example :
 ```
 POST /twitter/search HTTP/1.1
@@ -50,7 +111,7 @@ Cache-Control: no-cache
 { "query": "an", "count": 100, "wipe_previous": true }
 ```
 
-#### 1: /stream 
+### 2: /stream 
 Post method to stream tweets for a given time interval for requested keyword.
 
 ##### Request Parameters: 
@@ -67,3 +128,240 @@ Cache-Control: no-cache
 
 { "query": "an", "count": 100, "wipe_previous": true }
 ```
+#### Returns : 
+  Number of tweets stored in the databas.
+  
+# API 2: /getTweets
+API for getting the tweets stored. Apply filters, sorting and get tweets
+
+### Optional Pagination: 
+  ### Request Paramenters required
+ * 1: size – How many records per page (Optional for Pagination)
+ * 2: pageNo – the number of the page (Optional for Pagination)
+
+#### 1: /all 
+Post request for getting all the Tweets stored in the database.
+
+##### Example :
+```
+POST /twitter/search HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "query": "an", "count": 100, "wipe_previous": true }
+```
+
+### 2: /withTweetId/:tweet_id
+GET method to find a tweet in the database with given tweet id.
+ 
+##### Example :
+```
+GET /gettweets/withTweetId/1052021778489516000 HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+```
+### 3: /withText
+Post method to find tweets in the database with given text.
+
+##### Request Parameters: 
+ * 1: text: String
+ 
+##### Example :
+```
+POST /gettweets/withText HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "text" : "I just made an offer on poshmark for a black sequin jacket to wear to IDKH and MAX next month..I’m really hoping they accept" }
+```
+ ### 4: /withNumberOfHashtags
+Post method to find tweets in the database with number of Hashtags greater than equal to , less than equal to , or exactly given.
+
+##### Request Parameters: 
+ * 1: gte: Number -> greater than equal to
+ * 2: lte: Number -> less than equal to
+ * 3: exact: Number -> Exactly (If supplied, will be considered)
+ 
+##### Example :
+```
+POST /gettweets/withNumberOfHashtags HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "gte": 1 }
+```
+ ### 5: /withNumberOfUrls  
+Post method to find tweets in the database with number of Urls greater than equal to , less than equal to , or exactly given. Similar to 4.
+ 
+ ### 6: /withNumberOfUserMentions  
+Post method to find tweets in the database with number of UserMentions greater than equal to , less than equal to , or exactly given. Similar to 4.
+
+ ### 7: /withRetweetCount  
+Post method to find tweets in the database with number of Retweet Count greater than equal to , less than equal to , or exactly given. Similar to 4.
+
+ ### 8: /withHashtag
+Post method to find tweets in the database with given Hashtag in text.
+
+##### Request Parameters: 
+ * 1: hashtag: String
+ 
+##### Example :
+```
+POST /gettweets/withHashtag HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "hashtag":"video" }
+```
+
+ ### 9: /withUrl
+Post method to find tweets in the database with given Url in text.
+
+##### Request Parameters: 
+ * 1: url: String
+ 
+##### Example :
+```
+POST /gettweets/withHashtag HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "url":"https://t.co/qWXGxsqkpr" }
+```
+ ### 10: /withUserMention
+ Post method to find tweets in the database with given UserMention in text.
+
+##### Request Parameters: 
+ * 1: user_mention: String
+ 
+ ##### Example :
+```
+POST /gettweets/withUserMention HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "user_mention":"DavidNir" }
+```
+ ### 11: /fromUserWithUsername
+ Post method to find tweets in the database with given User's name in text.
+
+##### Request Parameters: 
+ * 1: user_name: String
+ 
+ ##### Example :
+```
+POST /gettweets/withUsername HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "user_name":"Prasoon Birla" }
+```
+### 12: /fromUserWithScreenName
+ Post method to find tweets in the database with given User's screen_name in text.
+
+##### Request Parameters: 
+ * 1: screen_name: String
+ 
+  ##### Example :
+ ```
+POST /gettweets/withScreenName HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "screen_name":"pbirla29" }
+```
+### 13: /withinDateRange
+ Post method to find tweets in the database within a date range.
+
+##### Request Parameters: 
+ *  Note: date_first should have occurred before date_second
+ *
+ * 1: date_first: ISO format (if only this supplied: gte this will result)
+ * 2: data_second: ISO format(if only this supplied: lte this will result)
+ 
+  ##### Example :
+ ```
+POST /gettweets/withinDateRange HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "date_first" : "2018-10-16T02:21:52.000Z", "date_second" : "2018-10-16T02:21:52.000Z" }
+``` 
+
+### 14: /onDate
+ Post method to find tweets in the database on a specific date and time.
+
+##### Request Parameters: 
+ * 1: date: ISO format
+ 
+  ##### Example :
+ ```
+POST /gettweets/onDate HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "date" : "2018-10-16T02:21:52.000Z" }
+``` 
+
+### 15: /withMediaType
+ Post method to find tweets in the database containing a video or photo.
+
+##### Request Parameters: 
+ * 1: type: String : [photo, video]
+ 
+  ##### Example :
+ ```
+POST /gettweets/withMediaType HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "type": "photo" }
+``` 
+
+### 16: /fromSource
+ Post method to find tweets in the database from a specified source.
+
+##### Request Parameters: 
+ * 1: source: String [Android,iPhone,iPad,Mac, TweetDeck, Web]
+ 
+  ##### Example :
+ ```
+POST /gettweets/fromSource HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "source": "Android" }
+``` 
+### 17: /fromPlace
+ Post method to find tweets in the database from a specified place.
+
+##### Request Parameters: 
+ * 1: country: String,
+ * 2: country_code: String,
+ * 3: place_name: String,
+ * 4: place_type: String
+ 
+  ##### Example :
+ ```
+POST /gettweets/fromPlace HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "country_code": "IN" }
+``` 
+
