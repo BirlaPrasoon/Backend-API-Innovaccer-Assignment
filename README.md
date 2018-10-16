@@ -17,7 +17,7 @@ Node JS, MongoDB, npm must be pre-installed in the environment, at the time of d
  * [Node JS](https://nodejs.org/en/download/) v:8.10.0
  * [Express JS](https://expressjs.com/) : Framework 
  * [MongoDB](https://www.mongodb.com/download-center/v2/cloud?initial=true) v3.6.8
- * Middlewares : [mongoose](https://www.npmjs.com/package/mongoose), [morgan](https://www.npmjs.com/package/morgan), [pug](https://www.npmjs.com/package/pug), [chalk](https://www.npmjs.com/package/chalk)
+ * Middlewares : [mongoose](https://www.npmjs.com/package/mongoose), [morgan](https://www.npmjs.com/package/morgan), [pug](https://www.npmjs.com/package/pug), [chalk](https://www.npmjs.com/package/chalk), [jsonexport](https://www.npmjs.com/package/jsonexport)
  * Twitter API Client for Node JS: [Twit](https://www.npmjs.com/package/twit)
 
 
@@ -89,11 +89,11 @@ var tweetSchema  = new Schema({
 });
 ```
 
-## API 1: [/twitter](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/firstAPI/firstAPIDoc.md) 
-API to store searched/ streamed tweets on specified keyword.
+## API 1: /twitter
+API to store searched/ streamed tweets on specified keyword. [Documentation](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/firstAPI/firstAPIDoc.md) 
 
-## API 2: [/gettweets](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/secondAPI/secondAPIDoc.md) 
-API to fetch stored tweets from the database, apply filters and sorting. Returns data in JSON format.
+## API 2: [/gettweets]
+API to fetch stored tweets from the database, apply filters and sorting. Returns data in JSON format. [Documentation](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/secondAPI/secondAPIDoc.md) 
 
-## API 3: [/getCSV](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/secondAPI/secondAPIDoc.md) 
+## API 3: [/getCSV] 
 Exactly similar to API 2, returns data in CSV format.
