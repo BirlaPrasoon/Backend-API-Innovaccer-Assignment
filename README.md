@@ -92,8 +92,8 @@ var tweetSchema  = new Schema({
 ## API 1: /twitter
 API to store searched/ streamed tweets on specified keyword. [Documentation](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/firstAPI/firstAPIDoc.md) 
 
-## API 2: [/gettweets]
+## API 2: /gettweets
 API to fetch stored tweets from the database, apply filters and sorting. Returns data in JSON format. [Documentation](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/secondAPI/secondAPIDoc.md) 
 
-## API 3: [/getCSV] 
+## API 3: /getCSV 
 Exactly similar to API 2, returns data in CSV format.
