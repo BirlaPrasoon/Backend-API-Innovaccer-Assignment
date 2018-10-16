@@ -2,6 +2,8 @@
 Using Twitter Search/Streaming API to fetch are store the target tweets with metadata
 (eg: user details, tweet time, favorites and retweet counts etc ) for a recent high traffic event.
 
+[First API doc](https://github.com/BirlaPrasoon/Backend-API-Innovaccer-Assignment/blob/master/firstAPI/firstAPIDoc.md)
+
 
 ## Getting Started
 
