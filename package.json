@@ -1,0 +1,22 @@
+{
+  "name": "twitter-backend-apis-innovaccer",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "json2csv": "^4.2.1",
+    "jsonexport": "^2.3.0",
+    "mongoose": "^5.3.3",
+    "mongoose-paginate": "^5.0.3",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "twit": "^2.2.11"
+  }
+}
