@@ -136,8 +136,8 @@ API for getting the tweets stored. Apply filters, sorting and get tweets
 
 ### Optional Pagination: 
   ### Request Paramenters required
- * 1: size – How many records per page (Optional for Pagination)
- * 2: pageNo – the number of the page (Optional for Pagination)
+ * 1: size (default 100) – How many records per page (Optional for Pagination)
+ * 2: pageNo (default 0)– the number of the page (Optional for Pagination)
 
 #### 1: /all 
 Post request for getting all the Tweets stored in the database.
@@ -151,6 +151,34 @@ Cache-Control: no-cache
 
 { "query": "an", "count": 100, "wipe_previous": true }
 ```
+
+#### 1: /sorted
+Post request for getting all the Tweets stored in the database based on supplied sort rule.
+
+##### Request Parameters: 
+ ###### value 1 represents : Descending order
+ ###### value -1 represents: Ascending order
+
+ * 1: created_at: [-1,1]
+ * 2: user_name: [-1,1]
+ * 3: user_screen_name: [-1,1]
+ * 4: text: [-1,1]
+ * 5: retweet_count: [-1,1]
+ * 6: favorite_count: [-1,1]
+ * 7: hashtag_count: [-1,1]
+ * 8: urls_count: [-1,1]
+ * 9: user_mentions_count: [-1,1]
+
+##### Example :
+```
+POST /twitter/search HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Cache-Control: no-cache
+
+{ "user_name": 1, "screen_name": 1, "retweet_count": 1}
+```
+
 
 ### 2: /withTweetId/:tweet_id
 GET method to find a tweet in the database with given tweet id.
