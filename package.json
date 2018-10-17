@@ -15,6 +15,7 @@
     "jsonexport": "^2.3.0",
     "mongoose": "^5.3.3",
     "mongoose-paginate": "^5.0.3",
+    "mongoose-regex-search": "^0.5.1",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
     "twit": "^2.2.11"

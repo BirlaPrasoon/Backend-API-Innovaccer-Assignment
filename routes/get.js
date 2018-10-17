@@ -95,8 +95,11 @@ router.get('/withTweetId/:tweet_id', function( req, res, next){
  *
  * request body contains:
  * 1: text: String
- * 2: size – How many records per page (Optional for Pagination)
- * 3: pageNo – the number of the page (Optional for Pagination)
+ * 2: exact_match: Boolean,
+ * 3: starts_with: Boolean,
+ * 4: ends_with: Boolean
+ * 5: size – How many records per page (Optional for Pagination)
+ * 6: pageNo – the number of the page (Optional for Pagination)
  *
  * @return places_found / error message
  * */
@@ -104,11 +107,16 @@ router.post('/withText', function( req, res, next){
 
     let withText = req.body.text;
     let sortOrder = null;
-    if(withText == null)
-        withText = '';
+    if(withText == null){
+        res.statusCode = 200;
+        res.send('No text supplied!');
+        return;
+    }
+
+    withText = findPattern(req,withText);
 
     // var query = {$text: {$search: withText}};
-    var query = {text: withText};
+    var query = {text: {$regex: withText}};
     execQuery(query,sortOrder,req, res, next);
 });
 
@@ -140,7 +148,7 @@ router.post('/withNumberOfHashtags', function( req, res, next){
         query = {"hashtag_count": {$gte : gte}};
     } else {
         res.statusCode = 200;
-        res.send('No parameters supplied!' + hashtag);
+        res.send('No of hashtags either not supplied or exceeds range.');
         return;
     }
 
@@ -176,7 +184,7 @@ router.post('/withNumberOfUrls', function( req, res, next){
         query = {"urls_count": {$gte : gte}};
     } else {
         res.statusCode = 200;
-        res.send('No parameters supplied!' + hashtag);
+        res.send('No of urls either not supplied or exceeds range');
         return;
     }
 
@@ -214,7 +222,7 @@ router.post('/withNumberOfUserMentions', function( req, res, next){
         query = {"user_mentions_count": {$gte : gte}};
     } else {
         res.statusCode = 200;
-        res.send('No parameters supplied!' + hashtag);
+        res.send('No of user mentions either not supplied or exceeds range.');
         return;
     }
 
@@ -227,6 +235,9 @@ router.post('/withNumberOfUserMentions', function( req, res, next){
  *
  * request body contains:
  * 1: user_mention: String
+ * 2: exact_match: Boolean,
+ * 3: starts_with: Boolean,
+ * 4: ends_with: Boolean
  * 2: size – How many records per page (Optional for Pagination)
  * 3: pageNo – the number of the page (Optional for Pagination)
  *
@@ -237,7 +248,11 @@ router.post('/withUserMention', function( req, res, next){
     let user_mention = String(req.body.user_mention);
     let sortOrder = null;
     if(user_mention !=null){
-        query = {user_mentions: {$elemMatch: {name: user_mention}}};
+        // query = {user_mentions: {$elemMatch: {name: user_mention}}};
+
+        user_mention =  findPattern(req, user_mention);
+
+        query = {user_mentions: {$elemMatch: {name:{$regex: user_mention}}}};
         execQuery(query,sortOrder,req, res, next);
     }
     else {
@@ -252,8 +267,11 @@ router.post('/withUserMention', function( req, res, next){
  *
  * request body contains:
  * 1: hashtag: String
- * 2: size – How many records per page (Optional for Pagination)
- * 3: pageNo – the number of the page (Optional for Pagination)
+ * 2: exact_match: Boolean,
+ * 3: starts_with: Boolean,
+ * 4: ends_with: Boolean
+ * 5: size – How many records per page (Optional for Pagination)
+ * 6: pageNo – the number of the page (Optional for Pagination)
  *
  * @return tweets_found / error message
  * */
@@ -262,11 +280,12 @@ router.post('/withHashtag', function( req, res, next){
     let hashtag = req.body.hashtag;
     let sortOrder = null;
     if(hashtag !=null){
-        query = {hashtags: {$elemMatch: {name: hashtag}}};
+        hashtag = findPattern(req,hashtag);
+        query = {hashtags: {$elemMatch: {name: {$regex : hashtag}}}};
         execQuery(query,sortOrder,req, res, next);
     }else {
         res.statusCode = 200;
-        res.send('No tweet found for hashtag #' + hashtag);
+        res.send('No hashtag supplied');
     }
 
 });
@@ -276,8 +295,11 @@ router.post('/withHashtag', function( req, res, next){
  *
  * request body contains:
  * 1: url: String
- * 2: size – How many records per page (Optional for Pagination)
- * 3: pageNo – the number of the page (Optional for Pagination)
+ * 2: exact_match: Boolean,
+ * 3: starts_with: Boolean,
+ * 4: ends_with: Boolean
+ * 5: size – How many records per page (Optional for Pagination)
+ * 6: pageNo – the number of the page (Optional for Pagination)
  *
  * @return tweets_found / error message
  * */
@@ -286,11 +308,12 @@ router.post('/withUrl', function( req, res, next){
     let url = req.body.url;
     let sortOrder = null;
     if(url !=null){
-        query = {urls: {$elemMatch: {name: url}}};
+        url = findPattern(req,url);
+        query = {urls: {$elemMatch: {name: {$regex: url}}}};
         execQuery(query,sortOrder,req, res, next);
     }else {
         res.statusCode = 200;
-        res.send('No tweet found for hashtag #' + hashtag);
+        res.send('No url supplied');
     }
 
 });
@@ -300,6 +323,11 @@ router.post('/withUrl', function( req, res, next){
  *
  * request body contains:
  * 1: user_name: String
+ * 2: exact_match: Boolean,
+ * 3: starts_with: Boolean,
+ * 4: ends_with: Boolean
+ * 5: size – How many records per page (Optional for Pagination)
+ * 6: pageNo – the number of the page (Optional for Pagination)
  *
  * @return tweets_found / error message
  * */
@@ -308,12 +336,13 @@ router.post('/fromUserWithUsername', function( req, res, next){
     let user_name = req.body.user_name;
     let sortOrder = null;
     if(user_name !=null){
-        query = {user_name : user_name};
+        user_name = findPattern(req,user_name);
+        query = {user_name : {$regex : user_name}};
         execQuery(query,sortOrder ,req, res, next);
     }
     else {
         res.statusCode = 200;
-        res.send('No user_mention supplied.');
+        res.send('No user_name supplied.');
     }
 
 });
@@ -323,8 +352,11 @@ router.post('/fromUserWithUsername', function( req, res, next){
  *
  * request body contains:
  * 1: screen_name: String
- * 2: size – How many records per page (Optional for Pagination)
- * 3: pageNo – the number of the page (Optional for Pagination)
+ * 2: exact_match: Boolean,
+ * 3: starts_with: Boolean,
+ * 4: ends_with: Boolean
+ * 5: size – How many records per page (Optional for Pagination)
+ * 6: pageNo – the number of the page (Optional for Pagination)
  *
  * @return tweets_found / error message
  * */
@@ -333,12 +365,13 @@ router.post('/fromUserWithScreenName', function( req, res, next){
     let screen_name = req.body.screen_name;
     var sortOrder = null;
     if(screen_name !=null){
-        query = {user_screen_name : screen_name};
+        screen_name = findPattern(req,screen_name);
+        var query = {user_screen_name : {$regex: screen_name}};
         execQuery(query,sortOrder,req, res, next);
     }
     else {
         res.statusCode = 200;
-        res.send('No user_mention supplied.');
+        res.send('No screen_name supplied.');
     }
 
 });
@@ -373,9 +406,9 @@ router.post('/withinDateRange', function( req, res, next){
         query = {created_at: {$lte: date2}}
     }
     else {
-            res.statusCode = 200;
-            res.send('Either date format not supported or dates not supplied or only one date supplied');
-            return ;
+        res.statusCode = 200;
+        res.send('Either date format not supported or dates not supplied or only one date supplied');
+        return ;
     }
     execQuery(query,sortOrder,req,res,next);
 });
@@ -474,7 +507,7 @@ router.post('/withMediaType', function( req, res, next){
 
     if(type!=null){
         if(type === 'photo'){
-           query =   {contains_photo : true};
+            query =   {contains_photo : true};
         }
         else if(type === 'video'){
             query = {contains_video : true};
@@ -605,6 +638,26 @@ function execQuery(query,sortorder,req, res, next) {
             res.send('Could not find Tweets');
         });
 
+}
+
+/**
+ * Create a regex search pattern from the given text according to spefied rule
+ * Rule: exact_match, starts_with, ends_with
+ *
+ * @param req: request Object
+ * @param text
+ *
+ * @return regesPattern : String
+ * */
+function findPattern(req, text) {
+    if (req.body.exact_match != null && req.body.exact_match)
+        text = "^" + text + "$";
+    else {
+        if (req.body.starts_with != null && req.body.starts_with)
+            text = "^" + text;
+        if (req.body.ends_with != null && req.body.ends_with)
+            text = text + '$'
+    }
 }
 
 module.exports = router;

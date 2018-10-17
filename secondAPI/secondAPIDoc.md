@@ -1,10 +1,22 @@
 # API 2: /getTweets
 API for getting the tweets stored. Apply filters, sorting and get tweets
 
-### Optional Pagination: 
-  ### Request Paramenters required
- * 1: size (default 100) – How many records per page (Optional for Pagination)
- * 2: pageNo (default 0)– the number of the page (Optional for Pagination)
+ 
+   ### Request Paramenters for Pagination (Optional)
+     Note: Defaults: size= 10, pageNo = 0
+     1: size (default 100) – How many records per page (Optional for Pagination)
+     2: pageNo (default 0)– the number of the page (Optional for Pagination)
+
+   ### Request Parameters for String search
+      1: exact_match: Boolean,
+      2: starts_with: Boolean,
+      3: ends_with: Boolean
+      
+   ### Request Parameters for Integer search
+      1: gte: Number -> greater than equal to
+      2: lte: Number -> less than equal to
+      3: exact: Number -> Exactly (If supplied, will be considered)
+   
 
 #### 1: /all 
 Post request for getting all the Tweets stored in the database.
@@ -23,8 +35,7 @@ Cache-Control: no-cache
 Post request for getting all the Tweets stored in the database based on supplied sort rule.
 
 ##### Request Parameters: 
- ###### value 1 represents : Descending order
- ###### value -1 represents: Ascending order
+ Note: value 1 for Descending, -1 for Ascending
 
  * 1: created_at: [-1,1]
  * 2: user_name: [-1,1]
