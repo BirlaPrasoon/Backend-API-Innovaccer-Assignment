@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22432e27-0f55-4aef-9d4a-d60900e402f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/get.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/getcsv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/getcsv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondAPI/secondAPIDoc.md" beforeDir="false" afterPath="$PROJECT_DIR$/secondAPI/secondAPIDoc.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +15,11 @@
     <session id="-1104349721">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -42,7 +39,7 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="302" />
+          <entry key="js" value="329" />
           <entry key="md" value="243" />
         </counts>
       </usages-collector>
@@ -51,7 +48,7 @@
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="302" />
+          <entry key="JavaScript" value="329" />
           <entry key="Markdown" value="243" />
         </counts>
       </usages-collector>
@@ -62,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/getcsv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1824">
-              <caret line="675" selection-start-line="675" selection-end-line="675" />
+            <state relative-caret-position="1944">
+              <caret line="669" column="16" selection-start-line="669" selection-start-column="16" selection-end-line="669" selection-end-column="16" />
               <folding>
                 <element signature="e#360#583#0" />
                 <element signature="e#704#1292#0" />
@@ -106,17 +103,16 @@
                 <element signature="n#!!doc;n#execQuery#0" />
                 <element signature="n#!!block;n#execQuery#0" />
                 <element signature="n#!!doc;n#findPattern#0" />
-                <element signature="n#!!block;n#findPattern#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/get.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="198" selection-start-line="198" selection-end-line="200" selection-end-column="64" />
+            <state relative-caret-position="548">
+              <caret line="652" column="10" lean-forward="true" selection-start-line="652" selection-start-column="10" selection-end-line="652" selection-end-column="10" />
               <folding>
                 <element signature="e#107#330#0" />
                 <element signature="e#451#1039#0" />
@@ -124,7 +120,6 @@
                 <element signature="e#2072#2299#0" />
                 <element signature="e#2362#2658#0" />
                 <element signature="e#2662#3009#0" />
-                <element signature="e#3060#3425#0" />
                 <element signature="e#3429#3842#0" />
                 <element signature="e#3905#4550#0" />
                 <element signature="e#4554#4830#0" />
@@ -142,23 +137,9 @@
                 <element signature="e#9860#10227#0" />
                 <element signature="e#10292#10661#0" />
                 <element signature="e#10665#11121#0" />
-                <element signature="e#11179#11841#0" />
-                <element signature="e#11845#12101#0" />
-                <element signature="e#12150#12461#0" />
-                <element signature="e#12465#12861#0" />
-                <element signature="e#12920#13560#0" />
-                <element signature="e#13564#13808#0" />
-                <element signature="e#13861#13973#0" />
-                <element signature="e#13977#14260#0" />
-                <element signature="e#14316#14843#0" />
-                <element signature="e#14847#15152#0" />
-                <element signature="e#15205#16107#0" />
-                <element signature="e#16111#16467#0" />
-                <element signature="e#16519#16734#0" />
                 <element signature="n#!!doc;n#execQuery#0" />
                 <element signature="n#!!block;n#execQuery#0" />
                 <element signature="n#!!doc;n#findPattern#0" />
-                <element signature="n#!!block;n#findPattern#0" />
               </folding>
             </state>
           </provider>
@@ -173,12 +154,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/secondAPI/secondAPIDoc.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="254">
-                <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+                <caret line="38" selection-start-line="38" selection-end-line="38" />
               </first_editor>
               <second_editor />
             </state>
@@ -202,9 +183,9 @@
       <list>
         <option value="$PROJECT_DIR$/regex.js" />
         <option value="$PROJECT_DIR$/properties.js" />
-        <option value="$PROJECT_DIR$/routes/get.js" />
-        <option value="$PROJECT_DIR$/routes/getcsv.js" />
         <option value="$PROJECT_DIR$/secondAPI/secondAPIDoc.md" />
+        <option value="$PROJECT_DIR$/routes/getcsv.js" />
+        <option value="$PROJECT_DIR$/routes/get.js" />
       </list>
     </option>
   </component>
@@ -313,11 +294,12 @@
       <updated>1539769621430</updated>
       <workItem from="1539769624819" duration="2042000" />
       <workItem from="1539777597675" duration="756000" />
+      <workItem from="1539780163540" duration="103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2798000" />
+    <option name="totallyTimeSpent" value="2901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="32" width="1853" height="1048" extended-state="6" />
@@ -365,13 +347,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/regex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/regex.js" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -393,10 +369,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" selection-start-line="12" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/secondAPI/secondAPIDoc.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="254">
+            <caret line="38" selection-start-line="38" selection-end-line="38" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/getcsv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1824">
-          <caret line="675" selection-start-line="675" selection-end-line="675" />
+        <state relative-caret-position="1944">
+          <caret line="669" column="16" selection-start-line="669" selection-start-column="16" selection-end-line="669" selection-end-column="16" />
           <folding>
             <element signature="e#360#583#0" />
             <element signature="e#704#1292#0" />
@@ -439,22 +432,14 @@
             <element signature="n#!!doc;n#execQuery#0" />
             <element signature="n#!!block;n#execQuery#0" />
             <element signature="n#!!doc;n#findPattern#0" />
-            <element signature="n#!!block;n#findPattern#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" selection-start-line="12" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/get.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="198" selection-start-line="198" selection-end-line="200" selection-end-column="64" />
+        <state relative-caret-position="548">
+          <caret line="652" column="10" lean-forward="true" selection-start-line="652" selection-start-column="10" selection-end-line="652" selection-end-column="10" />
           <folding>
             <element signature="e#107#330#0" />
             <element signature="e#451#1039#0" />
@@ -462,7 +447,6 @@
             <element signature="e#2072#2299#0" />
             <element signature="e#2362#2658#0" />
             <element signature="e#2662#3009#0" />
-            <element signature="e#3060#3425#0" />
             <element signature="e#3429#3842#0" />
             <element signature="e#3905#4550#0" />
             <element signature="e#4554#4830#0" />
@@ -480,34 +464,10 @@
             <element signature="e#9860#10227#0" />
             <element signature="e#10292#10661#0" />
             <element signature="e#10665#11121#0" />
-            <element signature="e#11179#11841#0" />
-            <element signature="e#11845#12101#0" />
-            <element signature="e#12150#12461#0" />
-            <element signature="e#12465#12861#0" />
-            <element signature="e#12920#13560#0" />
-            <element signature="e#13564#13808#0" />
-            <element signature="e#13861#13973#0" />
-            <element signature="e#13977#14260#0" />
-            <element signature="e#14316#14843#0" />
-            <element signature="e#14847#15152#0" />
-            <element signature="e#15205#16107#0" />
-            <element signature="e#16111#16467#0" />
-            <element signature="e#16519#16734#0" />
             <element signature="n#!!doc;n#execQuery#0" />
             <element signature="n#!!block;n#execQuery#0" />
             <element signature="n#!!doc;n#findPattern#0" />
-            <element signature="n#!!block;n#findPattern#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/secondAPI/secondAPIDoc.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="254">
-            <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>

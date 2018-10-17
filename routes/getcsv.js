@@ -111,17 +111,15 @@ router.post('/withText', function( req, res, next){
 
     let withText = req.body.text;
     let sortOrder = null;
-    if(withText == null){
+    if(withText != null){
+        withText = findPattern(req,withText);
+        // var query = {$text: {$search: withText}};
+        var query = {text: {$regex: withText}};
+        execQuery(query,sortOrder,req, res, next);
+    }else{
         res.statusCode = 200;
         res.send('No text supplied!');
-        return;
     }
-
-    withText = findPattern(req,withText);
-
-    // var query = {$text: {$search: withText}};
-    var query = {text: {$regex: withText}};
-    execQuery(query,sortOrder,req, res, next);
 });
 
 /**
@@ -669,6 +667,7 @@ function findPattern(req, text) {
         if (req.body.ends_with != null && req.body.ends_with)
             text = text + '$'
     }
+    return text;
 }
 
 module.exports = router;
